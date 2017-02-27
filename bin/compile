@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-curl -s $LIBRATO_INSTALL_SCRIPT | sudo bash
+BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
+source $BIN_DIR/utils
+
+puts-step "Installing Librato agent with script $LIBRATO_INSTALL_SCRIPT"
+curl -s $LIBRATO_INSTALL_SCRIPT | bash
