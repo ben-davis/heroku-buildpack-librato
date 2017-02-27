@@ -1,0 +1,13 @@
+# Buildpack Steps.
+function puts () {
+  echo "       $@"
+}
+
+function puts-step (){
+  echo "-----> $@"
+}
+
+# Buildpack Warnings.
+function puts-warn (){
+  echo " !     $@"
+}
