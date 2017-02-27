@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
-BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
-source $BIN_DIR/utils
+BUILDPACK_DIR=$(cd $(dirname $0); pwd) # absolute path
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+source $BUILDPACK_DIR/utils
 
 # Export env vars into current environment
-export_env_dir
+export_env_dir ENV_DIR
 
 puts-step "Installing Librato agent with script $LIBRATO_INSTALL_SCRIPT"
 curl -s $LIBRATO_INSTALL_SCRIPT | bash
