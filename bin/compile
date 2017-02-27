@@ -3,5 +3,8 @@
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 source $BIN_DIR/utils
 
+# Export env vars into current environment
+export_env_dir
+
 puts-step "Installing Librato agent with script $LIBRATO_INSTALL_SCRIPT"
 curl -s $LIBRATO_INSTALL_SCRIPT | bash
