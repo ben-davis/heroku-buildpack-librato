@@ -8,7 +8,10 @@ ENV_DIR=$3
 source $BUILDPACK_DIR/utils
 
 # Export env vars into current environment
-export_env_dir ENV_DIR
+# export_env_dir ENV_DIR
+KEY="LIBRATO_INSTALL_SCRIPT"
+[ -f $ENV_DIR/$KEY ] && export "$KEY=$(cat $ENV_DIR/$KEY)"
+[ -z "${!KEY}" ] && echo "You didn't set $KEY, and this is required." && exit 1
 
 puts-step "Installing Librato agent with script $LIBRATO_INSTALL_SCRIPT"
 curl -s $LIBRATO_INSTALL_SCRIPT | bash
